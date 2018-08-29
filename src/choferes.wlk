@@ -24,11 +24,7 @@ object mariela {
 
 object juana {
 	method precioViaje(cliente, kms) { 
-		if (kms<8) {
-			return 100
-		}else{
-			return 200
-		}
+		return if (kms<8) {100} else {200}
 	}
 }
 
@@ -39,5 +35,30 @@ object lucia {
 	}
 	method precioViaje(cliente, kms) {
 		return _chofer.precioViaje(cliente,kms)
+	}
+}
+
+object oficina {
+	var _chofer1
+	var _chofer2
+		
+	method asignarChoferes(chofer1, chofer2){
+		_chofer1=chofer1
+		_chofer2=chofer2
+	}
+	method cambiarPrimerChoferPor(chofer){
+		_chofer1=chofer		
+	}
+	method cambiarSegundoChoferPor(chofer){
+		_chofer2=chofer
+	}
+	method intercambiarChoferes(){
+		const _choferTemp=_chofer1
+		_chofer1=_chofer2
+		_chofer2=_choferTemp
+		//self.asignarChoferes(_chofer2,_chofer1)
+	}
+	method choferElegidoParaViaje(cliente, kms){
+		return if (_chofer2.precioViaje(cliente, kms)<_chofer1.precioViaje(cliente, kms)-30){_chofer2}else{_chofer1}
 	}
 }

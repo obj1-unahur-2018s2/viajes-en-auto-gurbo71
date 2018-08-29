@@ -11,7 +11,10 @@ object teresa {
 
 object melina {
 	var _cliente=null
-	method precioPactadoPorKm(cliente) {
+	method reemplazoCliente(cliente) {
+		_cliente=cliente
+	}
+	method precioPactadoPorKm() {
 		return _cliente.precioPactadoPorKm()-3
 	}
 }
